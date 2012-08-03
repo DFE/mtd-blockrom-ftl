@@ -161,7 +161,7 @@ static int blockrom_readsect(struct mtd_blktrans_dev *dev,
 	 * low nibble of requested HDD block's byte offset */
 	addr = offs | ((block * 512) & (map->dev.mtd->erasesize - 1));
 
-	ret = dev->mtd->read(dev->mtd, addr, 512, &retlen, buf);
+	ret = dev->mtd->read(dev->mtd, addr, 512, &retlen, (uint8_t *) buf);
 
 #ifdef MTD_BLOCK_ROM_BIT_SCRUBBING
 	if (ret == EUCLEAN)

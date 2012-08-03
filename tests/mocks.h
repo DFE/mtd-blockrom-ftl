@@ -38,7 +38,7 @@
 	const typeof( ((type *)0)->member ) *__mptr = (ptr);	\
 	(type *)( (char *)__mptr - offsetof(type,member) );})
 
-static inline div_u64( uint64_t divident, uint64_t divisor)
+static inline uint64_t div_u64( uint64_t divident, uint64_t divisor)
 {
 	return divident / divisor;
 }

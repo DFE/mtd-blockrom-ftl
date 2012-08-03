@@ -6,7 +6,6 @@
 
 static void test_remove ( void )
 {
-	struct mtd_blktrans_ops test_ops;
 	struct mtd_block_map	test_map;
 
 	const unsigned int 	nr_of_ebs = 4;

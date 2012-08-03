@@ -6,7 +6,6 @@
 
 static void test_readsect ( void )
 {
-	struct mtd_blktrans_ops test_ops;
 	struct mtd_block_map	test_map;
         struct mtd_info         test_mtd;
         char * test_buf = "testbuf";
@@ -31,7 +30,8 @@ static void test_readsect ( void )
         test_map.dev.mtd   = &test_mtd;
 
         MOCK_5_CALL( mtd_read_ret, mtd_read, &test_mtd, 
-                    ( 3* test_mtd.erasesize + 512), 512, DONT_CHECK_PARAM, test_buf );
+                    ( 3* test_mtd.erasesize + 512), 512, DONT_CHECK_PARAM,
+                    (uint8_t *)test_buf );
 
         TEST_ASSERT( mtd_read_ret, blockrom_tr.readsect( &test_map.dev, 
                     ( 2* test_mtd.erasesize + 512) / 512, test_buf), int);
